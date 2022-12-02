@@ -47,7 +47,7 @@ int main() {
   printf("highest calories: %d \n", HEC);
   printf("2nd highest: %d \n", SEC);
   printf("3rd highest: %d \n", TEC);
-  printf("total: %d \n", HEC + SEC + TEC);
+  printf("total of top 3: %d \n", HEC + SEC + TEC);
 
   free(line);
   free(fp);
