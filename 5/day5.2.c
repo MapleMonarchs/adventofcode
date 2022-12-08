@@ -56,72 +56,75 @@ int main() {
 		int count = strtonum(ccunt, 0, 1000, &errstring);
 		int src	  = strtonum(csrc, 0, 1000, &errstring);
 		int dest  = strtonum(cdest, 0, 1000, &errstring);
-
+		
+		cstack* crates = &(cstack){.pointer = -1};		
+	
 		for(int i=0; i < count; i++){
-			char * crate;
 
 			switch(src) {
 				case 1:
-					crate = cstckpp(stack1);
+					cstckpsh(crates, cstckpp(stack1));
 					break;
 				case 2:
-					crate = cstckpp(stack2);
+					cstckpsh(crates, cstckpp(stack2));
 					break;
 				case 3:
-					crate = cstckpp(stack3);
+					cstckpsh(crates, cstckpp(stack3));
 					break;
 				case 4:
-					crate = cstckpp(stack4);
+					cstckpsh(crates, cstckpp(stack4));
 					break;
 				case 5:
-					crate = cstckpp(stack5);
+					cstckpsh(crates, cstckpp(stack5));
 					break;
 				case 6:
-					crate = cstckpp(stack6);
+					cstckpsh(crates, cstckpp(stack6));
 					break;
 				case 7:
-					crate = cstckpp(stack7);
+					cstckpsh(crates, cstckpp(stack7));
 					break;
 				case 8:
-					crate = cstckpp(stack8);
+					cstckpsh(crates, cstckpp(stack8));
 					break;
 				case 9:
-					crate = cstckpp(stack9);
+					cstckpsh(crates, cstckpp(stack9));
 					break;
 			}
+		}
 
+		for(int i=0; i < count; i++) {
 			switch(dest) {
 				case 1:
-					cstckpsh(stack1, crate);
+					cstckpsh(stack1, cstckpp(crates));
 					break;
 				case 2:
-					cstckpsh(stack2, crate);
+					cstckpsh(stack2, cstckpp(crates));
 					break;
 				case 3:
-					cstckpsh(stack3, crate);
+					cstckpsh(stack3, cstckpp(crates));
 					break;
 				case 4:
-					cstckpsh(stack4, crate);
+					cstckpsh(stack4, cstckpp(crates));
 					break;
 				case 5:
-					cstckpsh(stack5, crate);
+					cstckpsh(stack5, cstckpp(crates));
 					break;
 				case 6:
-					cstckpsh(stack6, crate);
+					cstckpsh(stack6, cstckpp(crates));
 					break;
 				case 7:
-					cstckpsh(stack7, crate);
+					cstckpsh(stack7, cstckpp(crates));
 					break;
 				case 8:
-					cstckpsh(stack8, crate);
+					cstckpsh(stack8, cstckpp(crates));
 					break;
 				case 9:
-					cstckpsh(stack9, crate);
+					cstckpsh(stack9, cstckpp(crates));
 					break;
 			}
+		}
 
 			//printf("%s\n", crate);
-		}
 	}
 	
 	printf("stack1: %s\n", cstckpk(stack1));
