@@ -27,24 +27,29 @@ arg = 0
 
 cycle = 0
 
-inhalt = open("example.txt", "r")
+inhalt = open("input.txt", "r")
 
 moveSprite(1, 1)
 #printScreen(vram)
 
+y = 0
 while True:
     if(cycle > 239):
         break
     
+    print("cycle: ", cycle)
+    print("x: ", regx)
+    print("total x: ", regx + (40*y))
+    print("y:", y)
+    print("pause: ", pause)
+    print("sprite at cycle: ", vram[cycle])
     
-    if(pause == 0):
-        print("cycle: ", cycle)
-        print("x: ", regx)
+    if(pause == 0):        
+        regx  += arg
         
-        regx += arg
+        moveSprite(regx + (40*y), (regx+ (40*y)) - arg)
+        
         arg = 0
-        
-        moveSprite(regx, regx - arg)
         
         line = inhalt.readline()
         print(line, end=' ')
@@ -57,15 +62,14 @@ while True:
             pause = 1
     else:
         pause = pause - 1
-        print("cycle: ", cycle)
-        print("X: ", regx)
-        print("pause: ", pause)
     
     if(vram[cycle] == 1):
         screen[cycle] = 'X'
     else: 
         screen[cycle] = '.'
     cycle += 1
+    
+    y = cycle // 40
 
 printScreen(screen)
 #printScreen(vram)
